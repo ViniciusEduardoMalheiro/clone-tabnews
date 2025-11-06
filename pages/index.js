@@ -13,30 +13,6 @@ export default function Home() {
     localStorage.setItem("minhaCarta", text);
   }, [text]);
 
-  function handleCopy() {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text);
-      alert("Carta copiada para a área de transferência 💌");
-    }
-  }
-
-  function handleDownload() {
-    const blob = new Blob([text || ""], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "minha-carta.txt";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  function handleClear() {
-    if (confirm("Tem certeza que quer limpar a carta?")) {
-      setText("");
-      localStorage.removeItem("minhaCarta");
-    }
-  }
-
   return (
     <>
       <Head>
@@ -46,38 +22,39 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Indie+Flower&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
 
       <main className="page">
-        <div className="float-hearts" aria-hidden="true">
-          <span className="heart h1">❤</span>
-          <span className="heart h2">❤</span>
-          <span className="heart h3">❤</span>
+        <div className="float-hearts">
+          <span className="heart h1">💖</span>
+          <span className="heart h2">💖</span>
+          <span className="heart h3">💖</span>
         </div>
 
         <header className="header">
-          <h1>Para Você, meu amor</h1>
-          <p className="subtitle">
-            Escreva aqui sua carta — ela ficará salva no seu navegador.
-          </p>
+          <h1>Para Você, meu amor, Daniele</h1>
         </header>
 
         <section className="card">
           <label className="paper">
-            <h3>Minha eterna namorada...</h3>
+            <h3>
+              Minha menina, estou fazendo essa cartinha para testar um projeto
+              meu, mas quero aproveitar e falar sobre o quanto eu amo você e
+              você é especial no meu coração, uma carta online não consegue
+              demonstrar o quanto eu amo você. Só quero desejar um ótimo
+              restante de dia para você, e falar que você pode contar comigo
+              para qualquer problema ou fase dificil que tiver passando, sou seu
+              apoio emocional e físico, sempre te amarei minha eterna
+              namorada...
+              <br></br>
+              <br></br>
+              Ass: Vinicius, seu grande amor.
+            </h3>
           </label>
-
-          <div className="actions">
-            <button onClick={handleCopy} className="btn primary">
-              💌 Copiar carta
-            </button>
-            <button onClick={handleDownload} className="btn">
-              📥 Baixar
-            </button>
-            <button onClick={handleClear} className="btn danger">
-              🧽 Limpar
-            </button>
-          </div>
         </section>
 
         <footer className="footer">
@@ -89,7 +66,7 @@ export default function Home() {
 
       <style jsx>{`
         :root {
-          --bg1: #fff5f7;
+          --bg1: #c03f59ff;
           --bg2: #ffeef8;
           --accent: #e76b8a;
           --accent-2: #ff9bb3;
@@ -104,8 +81,7 @@ export default function Home() {
         #__next {
           height: 100%;
           margin: 0;
-          font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
-            "Helvetica Neue", Arial;
+          font-family: "Blinker";
         }
 
         .page {
@@ -130,12 +106,30 @@ export default function Home() {
           inset: 0;
           pointer-events: none;
         }
+
+        .float-hearts > span {
+          color: #530013ff;
+        }
+
         .heart {
           position: absolute;
           font-size: 28px;
-          opacity: 0.12;
+          opacity: 70%;
           animation: float 6s ease-in-out infinite;
         }
+
+        .heart h1 {
+          color: #ff6f91ff;
+        }
+
+        .heart h2 {
+          background-color: #ff9671ff;
+        }
+
+        .heart h3 {
+          color: #ff9671ff;
+        }
+
         .h1 {
           left: 10%;
           top: 18%;
@@ -153,16 +147,22 @@ export default function Home() {
           top: 70%;
           animation-duration: 9s;
           transform: rotate(-4deg);
+          color: #441526ff;
+        }
+
+        .card h3 {
+          color: #5a324bff;
+          font-family: "Indie Flower", cursive;
         }
 
         @keyframes float {
           0% {
             transform: translateY(0) scale(1);
-            opacity: 0.14;
+            opacity: 70%;
           }
           50% {
             transform: translateY(-18px) scale(1.05);
-            opacity: 0.22;
+            opacity: 70%;
           }
           100% {
             transform: translateY(0) scale(1);
@@ -182,6 +182,10 @@ export default function Home() {
           letter-spacing: 0.6px;
           color: #6b2740;
         }
+        .header h3 {
+          color: #8e0034ff;
+        }
+
         .subtitle {
           margin: 6px 0 0;
           color: #8a5268;
