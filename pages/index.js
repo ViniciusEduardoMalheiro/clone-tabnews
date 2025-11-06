@@ -64,12 +64,7 @@ export default function Home() {
 
         <section className="card">
           <label className="paper">
-            <textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Querida...,"
-              aria-label="Escreva sua carta"
-            />
+            <h3>Minha eterna namorada...</h3>
           </label>
 
           <div className="actions">
